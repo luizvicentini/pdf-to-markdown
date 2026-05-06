@@ -59,10 +59,41 @@ O aplicativo possui dois modos selecionáveis pelo toggle switch na interface:
 - **PDF sem texto selecionável** — execute OCR externo primeiro.
 - **API key não configurada** — alterne para o modo local ou insira sua chave no campo correspondente.
 
+## Build do executável (.exe)
+
+Para rodar com duplo-clique sem precisar de terminal ou Python instalado, empacote em `.exe` com PyInstaller:
+
+```powershell
+# Duplo-clique em build.bat OU executar manualmente:
+.\build.bat
+```
+
+O `build.bat`:
+1. Verifica Python no PATH.
+2. Instala dependências de `requirements.txt`.
+3. Instala `pyinstaller==6.11.1`.
+4. Limpa `build/` e `dist/` anteriores.
+5. Executa `pyinstaller --noconfirm --clean build.spec`.
+
+**Saída:** `dist\PDF-to-Markdown\PDF-to-Markdown.exe`
+
+A pasta inteira `dist\PDF-to-Markdown\` é o aplicativo portátil — basta zipar e enviar. Crie um atalho do `.exe` na área de trabalho para acesso rápido.
+
+### Ícone customizado (opcional)
+
+Coloque um arquivo `icon.ico` em `assets/`. Se ausente, o `.exe` usa ícone padrão.
+
+### Avisos sobre antivírus
+
+Executáveis gerados pelo PyInstaller às vezes geram falso-positivo no Windows Defender ou outros antivírus. Isso ocorre porque PyInstaller é usado tanto por desenvolvedores legítimos quanto por malware. Soluções:
+- Adicionar exceção manualmente no antivírus.
+- Assinar digitalmente o executável (requer certificado de code-signing pago).
+- Usar modo `--onedir` (já configurado), que reduz a taxa de falsos-positivos comparado a `--onefile`.
+
 ## Estrutura do projeto
 
 ```
-pdf_to_markdown/
+pdf-to-markdown/
 ├── main.py              # Entry point
 ├── app.py               # Interface CustomTkinter
 ├── extractor.py         # Extração de PDF/TXT/DOCX
@@ -70,6 +101,10 @@ pdf_to_markdown/
 ├── converter_api.py     # Integração com API Anthropic
 ├── config.py            # Leitura/escrita de config.json
 ├── utils.py             # Helpers
+├── build.spec           # Configuração PyInstaller
+├── build.bat            # Script de build (duplo-clique)
+├── assets/
+│   └── icon.ico         # Ícone do executável (opcional)
 ├── config.json          # Criado automaticamente (gitignored)
 ├── .gitignore
 ├── requirements.txt
