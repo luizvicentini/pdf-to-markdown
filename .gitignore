@@ -1,0 +1,23 @@
+# Configuração local — pode conter API key
+config.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Saídas
+*.md.bak
+build/
+dist/
+*.egg-info/
