@@ -27,7 +27,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Na primeira execução o arquivo `config.json` é criado automaticamente no diretório do projeto. Ele guarda o último modo escolhido e a última `ANTHROPIC_API_KEY` digitada — por isso o `config.json` está incluído no `.gitignore`.
+Na primeira execução o arquivo `config.json` é criado automaticamente no diretório do projeto. Ele guarda o último modo escolhido e a última `ANTHROPIC_API_KEY` digitada.
 
 ## Modos de operação
 
@@ -76,7 +76,4 @@ pdf_to_markdown/
 └── README.md
 ```
 
-## Notas de segurança
 
-- A API key fica em `config.json`, que está listado no `.gitignore`. **Não** comite esse arquivo em repositórios públicos.
-- O aplicativo nunca imprime a chave em logs nem a inclui em mensagens de erro mostradas ao usuário (qualquer string que contenha a chave é redacted como `[REDACTED]` antes de exibição).
