@@ -34,7 +34,3 @@ python main.py
 ```
 
 Saída em `dist\PDF-to-Markdown\`. Para um ícone próprio, coloque `assets\icon.ico` antes de buildar.
-
-## Licença
-
-MIT.
